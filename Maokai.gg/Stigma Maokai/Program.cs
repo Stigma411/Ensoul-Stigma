@@ -230,6 +230,7 @@ namespace Stigma.Maokai
                 var Etarget = TargetSelector.GetTarget(E.Range, DamageType.Magical);
                 if (Etarget != null)
                 {
+                    E.CastIfHitchanceEquals(Etarget, HitChance.VeryHigh);
                     return;
                 }
             }
@@ -238,6 +239,7 @@ namespace Stigma.Maokai
                 var Wtarget = TargetSelector.GetTarget(W.Range, DamageType.Magical);
                 if (Wtarget != null)
                 {
+                    W.CastIfHitchanceEquals(Wtarget, HitChance.VeryHigh);
                     return;
                 }
             }
