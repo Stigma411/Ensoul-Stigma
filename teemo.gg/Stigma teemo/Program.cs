@@ -37,7 +37,7 @@ namespace Stigma.Teemo
             CreateSpells();
             CreateMenu();
             CreateEvents();
-            Chat.Print(" Stigma: Teemo 9.19 #Bug R Fixed");
+            Chat.Print(" Stigma: Teemo 9.19 #Bug R Fixed FARM");
 
         }
 
@@ -65,18 +65,12 @@ namespace Stigma.Teemo
             {
                 Render.Circle.DrawCircle(Player.Position, Q.Range, System.Drawing.Color.Green);
             }
-            else
-            {
-                Render.Circle.DrawCircle(Player.Position, Q.Range, System.Drawing.Color.Crimson);
-            }
-            if (R.IsReady())
+               if (R.IsReady())
             {
                 Render.Circle.DrawCircle(Player.Position, R.Range, System.Drawing.Color.Green);
             }
-            else
-            {
-                Render.Circle.DrawCircle(Player.Position, R.Range, System.Drawing.Color.Crimson);
-            }
+            
+
         }
 
         private static void GameOnOnUpdate(EventArgs args)
@@ -133,13 +127,12 @@ namespace Stigma.Teemo
             }
            
            
-            if (LaneClearUseR && R.IsReady() && Player.CountEnemyHeroesInRange(400) == 0)
+            if (LaneClearUseR && R.IsReady())
             {
-                var rMinions = GameObjects.Minions.Where(x => x.IsValidTarget(R.Range) && x.IsEnemy).ToList();
+                var rMinions = GameObjects.Minions.Where(x => x.IsValidTarget(R.Range) && !x.IsAlly);
                 if (rMinions.Any())
                 {
-                    var minionLocation = R.GetCircularFarmLocation(rMinions);
-                    R.Cast(minionLocation.Position);
+                    R.CastOnUnit(rMinions.FirstOrDefault());
                 }
             }
         }
@@ -243,7 +236,7 @@ namespace Stigma.Teemo
             //Lane Clear Menu
             var lClearMenu = new Menu("LaneClear", "LaneClear");
             MeuUI.AddMenuBool(lClearMenu, "LaneClearUseQ", "Use Q");
-            MeuUI.AddMenuBool(lClearMenu, "LaneClearUseR", "Do not use R if nearby enemy");
+            MeuUI.AddMenuBool(lClearMenu, "LaneClearUseR", "Use R");
 
             Config.Add(lClearMenu);
 
