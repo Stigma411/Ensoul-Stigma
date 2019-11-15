@@ -35,7 +35,7 @@ namespace Stigma.Mundo
             CreateSpells();
             CreateMenu();
             CreateEvents();
-            Chat.Print(" Stigma: Cutelada nas costa dos cara #1");
+            //Chat.Print(" Stigma: Cutelada nas costa dos cara #1");
 
         }
 
@@ -72,7 +72,7 @@ namespace Stigma.Mundo
 
         private static void CreateEvents()
         {
-            Game.OnTick += GameOnOnUpdate;
+            Game.OnUpdate += GameOnOnUpdate;
             Drawing.OnDraw += DrawingOnOnDraw;
             Interrupter.OnInterrupterSpell += InterrupterOnOnInterrupterSpell;
         }

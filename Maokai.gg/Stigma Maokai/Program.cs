@@ -35,7 +35,7 @@ namespace Stigma.Maokai
             CreateSpells();
             CreateMenu();
             CreateEvents();
-            Chat.Print(" Stigma: Maokai 9.19 #Arvore Braba V1.1.0.1");
+            //Chat.Print(" Stigma: Maokai 9.19 #Arvore Braba V1.1.0.1");
 
         }
 
@@ -73,7 +73,7 @@ namespace Stigma.Maokai
 
         private static void CreateEvents()
         {
-            Game.OnTick += GameOnOnUpdate;
+            Game.OnUpdate += GameOnOnUpdate;
             Drawing.OnDraw += DrawingOnOnDraw;
             Interrupter.OnInterrupterSpell += InterrupterOnOnInterrupterSpell;
         }

@@ -37,13 +37,13 @@ namespace Stigma.Teemo
             CreateSpells();
             CreateMenu();
             CreateEvents();
-            Chat.Print(" Stigma: Teemo 9.19 #Bug R Fixed FARM");
+            //Chat.Print(" Stigma: Teemo 9.19 #Bug R Fixed FARM");
 
         }
 
         private static void CreateEvents()
         {
-            Game.OnTick += GameOnOnUpdate;
+            Game.OnUpdate += GameOnOnUpdate;
             Drawing.OnDraw += DrawingOnOnDraw;
             Interrupter.OnInterrupterSpell += InterrupterOnOnInterrupterSpell;
         }
@@ -159,11 +159,11 @@ namespace Stigma.Teemo
             if (!FleeUseW)
                 return;
 
-            ObjectManager.Player.IssueOrder(GameObjectOrder.MoveTo, Game.CursorPosCenter);
+            ObjectManager.Player.IssueOrder(GameObjectOrder.MoveTo, Game.CursorPos);
 
             if (W.IsReady())
             {
-                W.Cast(Game.CursorPosCenter);
+                W.Cast(Game.CursorPos);
             }
         }
 
